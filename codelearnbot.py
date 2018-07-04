@@ -9,15 +9,15 @@ import json
 import requests
 import inspect
 
-bot = commands.Bot(command_prefix='>')
+bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
 async def loop():
     while True:
-        await bot.change_presence(game=discord.Game(name=">help", url="https://twitch.tv/MMgamerBOT", type=1))
+        await bot.change_presence(game=discord.Game(name=">help", type=2))
         await asyncio.sleep(15)
-        await bot.change_presence(game=discord.Game(name="Code Learn Offical Bot", url="https://twitch.tv/MMgamerBOT", type=1))
+        await bot.change_presence(game=discord.Game(name="Code Learn Offical Bot", type=2))
         await asyncio.sleep(15)
-        await bot.change_presence(game=discord.Game(name="prefix is >", url="https://twitch.tv/MMgamerBOT", type=1))
+        await bot.change_presence(game=discord.Game(name="prefix is >", type=2))
         await asyncio.sleep(15)
 
 @bot.event
@@ -348,7 +348,7 @@ async def warn(ctx, userName: discord.Member ,*, reason: str):
         embed = discord.Embed(title="Warned", description="{} You have been warned for **{}**".format(userName.mention, reason), color=0x008000)
         embed.set_thumbnail(url=userName.avatar_url)
         embed.set_author(name=ctx.message.author.name, icon_url=ctx.message.author.avatar_url)
-        await bot.send_message(client.get_channel("461818016909492224"), embed=embed)
+        await bot.send_message(bot.get_channel("461818016909492224"), embed=embed)
         await bot.say(embed=embed)
         await bot.send_message(userName, "You Have Been Warned. Reason: {}".format(reason))
     else:
