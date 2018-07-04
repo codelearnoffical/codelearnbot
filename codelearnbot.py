@@ -9,7 +9,7 @@ import json
 import requests
 import inspect
 
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='>')
 bot.remove_command('help')
 async def loop():
     while True:
@@ -138,11 +138,6 @@ async def on_command_error(ctx, error):
         await bot.send_message(error.message.channel, embed=embed)
         raise(ctx)
 
-@bot.event
-async def on_message(message):
-    if message.content.upper.startswith('<@428590210524119040>'):
-         await bot.send_message(message.channel, ":wave: Hello There! I'm MMgamerBOT Im a cool multi function bot coded by MMgamer#3477 & EpicShardGamingYT#9597! Do `!help` to see all my commands!\n :earth_africa: https://mmgamerbot.com \n Coded With :heart:!")
-
 
 @bot.command(pass_context=True)
 async def cat(ctx):
@@ -255,11 +250,6 @@ async def github(ctx):
     embed.set_author(icon_url="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png",name="MMgamer")
     await bot.say(embed=embed)
 
-@bot.command(pass_context=True)
-async def invite(ctx):
-    embed=discord.Embed(title="Invite The Bot To Your Server!",description="The bot's invite link: https://goo.gl/FLPW5b", color=0x008000)
-    embed.set_author(icon_url="http://www.roofscreen.com/mediafiles/product_category_icons/10_strong-chain-icon.png",name="Link")
-    await bot.say(embed=embed)
 
 @bot.command(pass_context=True)
 async def mute(ctx, member: discord.Member, time: int, *, reason):
@@ -339,7 +329,7 @@ async def info(ctx, user: discord.Member):
 @bot.command(pass_context=True)
 async def trust(ctx, member: discord.Member):
     prefect = discord.utils.get(ctx.message.server.roles, name="Trusted Teacher")
-    await bot.add_roles(MEMBER_OBJECT, prefect)
+    await bot.add_roles(member, Trusted Teacher)
     await bot.say("{} is now a Trusted Teacher".format(member.mention))
 
 @bot.command(pass_context=True)
