@@ -329,7 +329,7 @@ async def info(ctx, user: discord.Member):
 @bot.command(pass_context=True)
 async def trust(ctx, member: discord.Member):
     prefect = discord.utils.get(ctx.message.server.roles, name="Trusted Teacher")
-    await bot.add_roles(member, Trusted Teacher)
+    await bot.add_roles(member, Prefect)
     await bot.say("{} is now a Trusted Teacher".format(member.mention))
 
 @bot.command(pass_context=True)
