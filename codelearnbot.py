@@ -16,9 +16,6 @@ async def loop():
     while True:
         await bot.change_presence(game=discord.Game(name=">help", type=2))
         await asyncio.sleep(15)
-        await bot.change_presence(game=discord.Game(name="Tof"{len(set(client.get_all_members()))} members
-", type=2))
-        await asyncio.sleep(15)
         await bot.change_presence(game=discord.Game(name="some dope people", type=2))
         await asyncio.sleep(15)
 
