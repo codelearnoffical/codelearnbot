@@ -8,6 +8,7 @@ import time
 import json
 import requests
 import inspect
+import aiohttp
 
 bot = commands.Bot(command_prefix='>')
 bot.remove_command('help')
@@ -15,9 +16,10 @@ async def loop():
     while True:
         await bot.change_presence(game=discord.Game(name=">help", type=2))
         await asyncio.sleep(15)
-        await bot.change_presence(game=discord.Game(name="Code Learn Offical Bot", type=2))
+        await bot.change_presence(game=discord.Game(name="Tof"{len(set(client.get_all_members()))} members
+", type=2))
         await asyncio.sleep(15)
-        await bot.change_presence(game=discord.Game(name="prefix is >", type=2))
+        await bot.change_presence(game=discord.Game(name="some dope people", type=2))
         await asyncio.sleep(15)
 
 @bot.event
@@ -194,45 +196,34 @@ async def cp(ctx, pt: int, *, name):
 @bot.command(pass_context=True)
 async def help(ctx, module="all"):
     module = module.lower()
-    if module == "info":
-                embed=discord.Embed(title="Help", description="""
-                Info Commands:
-                •`!ftn pc <player>` - Gets fortnite players status (pc only).
-                •`!info <@mention>` - Gets some info on the server.
-                •`!all_servers` - Shows all servers the bot is in.
-                •`!urban <querey>` -Searches the urbandic for your query
-                •`!pfp <@user>` >` - Shows a users's profile picture
-                •`!all_servers` - Shows all servers the bot is in.
-                """)
-                await bot.say(embed=embed)
     elif module == 'all':
         embed=discord.Embed(title="All Help", description="""
         Info Commands:
-        •`!ftn pc <player>` - Gets fortnite players status (pc only).
-        •`!info <@mention>` - Gets some info on the server.
-        •`!all_servers` - Shows all servers the bot is in.
-        •`!urban <querey>` -Searches the urbandic for your query
-        •`!pfp <@user>` - Shows a users's profile picture
-        •`!all_servers` - Shows all servers the bot is in.
+        •`>ftn pc <player>` - Gets fortnite players status (pc only).
+        •`>info <@mention>` - Gets some info on the server.
+        •`>all_servers` - Shows all servers the bot is in.
+        •`>urban <querey>` -Searches the urbandic for your query
+        •`>pfp <@user>` - Shows a users's profile picture
+        •`>all_servers` - Shows all servers the bot is in.
         Fun commands:
-         •`!cat` - Gets you a select cat GIF.
-         •`!dog` - Gets you a cool dog GIF.
-         •`!slap` - Slapy Slpay Scratchy Bitey.
-         •`!add` - Adds two numbers.
-         •`!multipy` - Multipys two numbers.
+         •`>cat` - Gets you a select cat GIF.
+         •`>dog` - Gets you a cool dog GIF.
+         •`>slap` - Slapy Slpay Scratchy Bitey.
+         •`>add` - Adds two numbers.
+         •`>multipy` - Multipys two numbers.
         Moderation Commands:
-        •`!warn <user> <reason>` - Warns a user (Also DM's)
-        •`!kick <@user>` - Kicks the user from the server
-        •`!ban <@user>` - Bans a user for the server
-        •`!mute <@user>` - Mutes a user
-        •`!leave` - Makes the bot leave the server
+        •`>warn <user> <reason>` - Warns a user (Also DM's)
+        •`>kick <@user>` - Kicks the user from the server
+        •`>ban <@user>` - Bans a user for the server
+        •`>mute <@user>` - Mutes a user
+        •`>leave` - Makes the bot leave the server
         Misc Commands:
-        •`!ami <@role>|<rolename>` - Tells you if you have that specific role in the server
-        •`!github` - Gets you the bot's github repo
-        •`!invite` - Gets you the bot's invite
+        •`>ami <@role>|<rolename>` - Tells you if you have that specific role in the server
+        •`>github` - Gets you codelearns github repo
         """, color=0x008000)
         embed.set_footer(icon_url="https://i.imgur.com/yB0Lig7.png", text="Custom bot for <code/learn>!")
         await bot.whisper(embed=embed)
+        await bot.say("Check your DMs")
 
 @bot.command(pass_context=True)
 async def urban(ctx, *, message):
@@ -246,10 +237,16 @@ async def urban(ctx, *, message):
 
 @bot.command(pass_context=True)
 async def github(ctx):
-    embed=discord.Embed(title="GitHub Repo",description="Our github repo: https://github.com/MMgamerBot/MMgamerBOT-2.0", color=0x008000)
+    embed=discord.Embed(title="GitHub Repo",description="Our github repo: https://github.com/codelearnoffical, color=0x008000)
     embed.set_author(icon_url="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png",name="MMgamer")
     await bot.say(embed=embed)
 
+@bot.command(pass_context=True)
+async def meme(ctx):
+    embed = discord.Embed(colour=0x008000)
+    embed.set_image(url=random.choice([ "https://max-media.imgix.net/transfers/2016/6/2/35493eb9ea00b43d76f504388a7d98eac01d9471.jpg?w=640&fit=max&auto=format&q=70", "https://max-media.imgix.net/transfers/2016/6/2/7b4575d386865d39cf75d5446516fa638828622e.png?w=640&fit=max&auto=format&q=70", "https://max-media.imgix.net/transfers/2016/6/2/34df8440609218f69c7466a1f19ab5aef6120596.png?w=640&fit=max&auto=format&q=70", "https://max-media.imgix.net/transfers/2016/6/2/7d41985b2e8962398df13d1272a6c258470ed53d.jpg?w=640&fit=max&auto=format&q=70", "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwi0k8_b0NPbAhWDaVAKHWdJAOkQjRx6BAgBEAU&url=https%3A%2F%2Fwww.memecenter.com%2Fsearch%2Fcheese&psig=AOvVaw3u9-NYrnxSlBDWcRFEoGYG&ust=1529081497518231"]))
+    embed.set_footer(icon_url="https://i.imgur.com/yB0Lig7.png", text="Custom Bot For The Coding Lounge")
+    await bot.say(embed=embed)
 
 @bot.command(pass_context=True)
 async def mute(ctx, member: discord.Member, time: int, *, reason):
@@ -311,25 +308,56 @@ async def ban(ctx, member: discord.Member):
             await bot.say(":x: No perms!")
 
 @bot.command(pass_context=True)
-async def info(ctx, user: discord.Member):
-    embed = discord.Embed(color=0xE9A72F)
-    embed.set_author(icon_url=user.avatar_url, name="Here's some info about {}".format(user.name))
-    embed.set_thumbnail(url=user.avatar_url)
-    embed.add_field(name="Name:", value=user.name, inline=True)
-    embed.add_field(name="Status:", value=user.status, inline=True)
-    embed.add_field(name="Users ID:", value=user.id, inline=True)
-    embed.add_field(name="Users Highest role:", value=user.top_role.mention, inline=True)
-    embed.add_field(name="Discriminator:", value=user.discriminator, inline=True)
-    embed.add_field(name="Playing:", value=user.game, inline=True)
-    embed.add_field(name="Joined", value=user.joined_at, inline=True)
-    embed.add_field(name="Account Creation:", value=user.created_at, inline=True)
-    embed.set_footer(icon_url="https://i.imgur.com/yB0Lig7.png", text="Custom bot for <code/learn>!")
-    await bot.say(embed=embed)
+async def info(ctx, user: discord.Member=None):
+    if user is None:
+        embed = discord.Embed(color=0x008000)
+        embed.set_author(name=ctx.message.author.display_name)
+        embed.add_field(name=":desktop:ID:", value=ctx.message.author.id, inline=True)
+        embed.add_field(name=":satellite:Status:", value=ctx.message.author.status, inline=True)
+        embed.add_field(name=":star2:Joined server::", value=ctx.message.author.joined_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        embed.add_field(name=":date:Created account:", value=ctx.message.author.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        embed.add_field(name=":bust_in_silhouette:Nickname:", value=user.display_name)
+        embed.add_field(name=":robot:Is Bot:", value=user.bot)
+        embed.add_field(name=':ballot_box_with_check: Top role:', value=ctx.message.author.top_role.name, inline=True)
+        embed.add_field(name=':video_game: Playing:', value=ctx.message.author.game, inline=True)
+        embed.set_thumbnail(url=ctx.message.author.avatar_url)
+        await asyncio.sleep(0.3)
+        await bot.say(embed=embed)
+    else:
+        embed = discord.Embed(color=0x008000)
+        embed.set_author(name=ctx.message.author.display_name)
+        embed.add_field(name=":desktop:ID:", value=ctx.message.author.id, inline=True)
+        embed.add_field(name=":satellite:Status:", value=ctx.message.author.status, inline=True)
+        embed.add_field(name=":star2:Joined server::", value=ctx.message.author.joined_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        embed.add_field(name=":date:Created account:", value=ctx.message.author.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        embed.add_field(name=":bust_in_silhouette:Nickname:", value=user.display_name)
+        embed.add_field(name=":robot:Is Bot:", value=user.bot)
+        embed.add_field(name=':ballot_box_with_check: Top role:', value=ctx.message.author.top_role.name, inline=True)
+        embed.add_field(name=':video_game: Playing:', value=ctx.message.author.game, inline=True)
+        embed.set_thumbnail(url=ctx.message.author.avatar_url)
+        await asyncio.sleep(0.3)
+        await bot.say(embed=embed)
+
+
+@bot.command(pass_context=True)
+async def checkuser(ctx, user: discord.Member=None):
+    if user is None:
+        embed = discord.Embed(color=0x008000)
+        embed.set_author(name=ctx.message.author.name ,icon_url=ctx.message.author.avatar_url)
+        embed.add_field(name=":star2:Joined server:", value=user.joined_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        embed.add_field(name=":date:Created account:", value=user.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        await bot.say (embed=embed)
+    else:
+        embed = discord.Embed(color=0x008000)
+        embed.set_author(name=ctx.message.author.name , icon_url=ctx.message.author.avatar_url)
+        embed.add_field(name=":star2:Joined server:", value=user.joined_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        embed.add_field(name=":date:Created account:", value=user.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=True)
+        await bot.say (embed=embed)
 
 @bot.command(pass_context=True)
 async def trust(ctx, member: discord.Member):
     prefect = discord.utils.get(ctx.message.server.roles, name="Trusted Teacher")
-    await bot.add_roles(member, Prefect)
+    await bot.add_roles(member, Trusted Teacher)
     await bot.say("{} is now a Trusted Teacher".format(member.mention))
 
 @bot.command(pass_context=True)
@@ -380,6 +408,44 @@ async def get_inv(ctx):
     for i in bot.servers:
         var = await bot.create_invite(i.channels[0])
         await bot.say(str(var))
+
+
+@bot.command(pass_context=True)
+async def server(ctx):
+    embed = discord.Embed(description="Here's what I could find:", color=0x008000)
+    embed.add_field(name="Name", value=ctx.message.server.name)
+    embed.add_field(name="Owner", value=ctx.message.server.owner)
+    embed.add_field(name="Region", value=ctx.message.server.region)
+    embed.add_field(name="Roles", value=len(ctx.message.server.roles))
+    embed.add_field(name="Members", value=len(ctx.message.server.members))
+    embed.add_field(name="Channels", value=len(ctx.message.server.channels))
+    embed.set_thumbnail(url=ctx.message.server.icon_url)
+    await bot.say(embed=embed)
+
+@bot.command(pass_context=True)
+async def gif(ctx):
+    embed=discord.Embed(title="Random GIF:", color=0x008000)
+    embed.set_image(url=random.choice(["https://media1.giphy.com/media/kHzsbx2ZCRfkIS5BLo/200w.gif", "https://media2.giphy.com/media/1jkYrQtUrRoI2Y9Yoa/200w.gif", "https://media0.giphy.com/media/vN3fMMSAmVwoo/200w.gif", "https://media0.giphy.com/media/WyrdDeIxGOlQA/200w.gif", "https://media2.giphy.com/media/QHE5gWI0QjqF2/giphy.gif", "https://media2.giphy.com/media/5ntdy5Ban1dIY/200w.gif"]))
+    embed.set_footer(icon_url="https://i.imgur.com/yB0Lig7.png", text="Custom bot for <code/learn>")
+    await bot.say(embed=embed)
+
+
+@bot.command(pass_context=True)
+async def bird(ctx):
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get('http://random.birb.pw/tweet/') as resp:
+                _url = (await resp.read()).decode("utf-8")
+                url = f"http://random.birb.pw/img/{str(_url)}"
+                embed = discord.Embed(color=0x008000)
+                embed.description = "**Random bird image :bird:**"
+                embed.set_image(url=url)
+                embed.set_footer(text=f"{self.bot.user.name}")
+                embed.timestamp = datetime.utcnow()
+                await bot.say(embed=embed)
+    except Exception as e:
+        await bot.say(':negative_squared_cross_mark: **API is unavailable now. Try again later!**' + e)
+
 
 @bot.command(pass_context=True)
 async def ball(ctx, question):
