@@ -16,6 +16,9 @@ async def loop():
     while True:
         await bot.change_presence(game=discord.Game(name=">help", type=2))
         await asyncio.sleep(15)
+        await bot.change_presence(game=discord.Game(name="Tof"{len(set(client.get_all_members()))} members
+", type=2))
+        await asyncio.sleep(15)
         await bot.change_presence(game=discord.Game(name="some dope people", type=2))
         await asyncio.sleep(15)
 
@@ -191,9 +194,7 @@ async def cp(ctx, pt: int, *, name):
 
 
 @bot.command(pass_context=True)
-async def help(ctx, module="all"):
-    module = module.lower()
-    elif module == 'all':
+async def help(ctx):
         embed=discord.Embed(title="All Help", description="""
         Info Commands:
         •`>ftn pc <player>` - Gets fortnite players status (pc only).
