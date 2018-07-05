@@ -350,12 +350,6 @@ async def checkuser(ctx, user: discord.Member=None):
         await bot.say (embed=embed)
 
 @bot.command(pass_context=True)
-async def trust(ctx, member: discord.Member):
-    prefect = discord.utils.get(ctx.message.server.roles, name="Trusted Teacher")
-    await bot.add_roles(member, Trusted Teacher)
-    await bot.say("{} is now a Trusted Teacher".format(member.mention))
-
-@bot.command(pass_context=True)
 async def warn(ctx, userName: discord.Member ,*, reason: str):
     if "Staff" in [role.name for role in ctx.message.author.roles] or ctx.message.author.server_permissions.administrator:
         embed = discord.Embed(title="Warned", description="{} You have been warned for **{}**".format(userName.mention, reason), color=0x008000)
